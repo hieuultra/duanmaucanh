@@ -21,8 +21,8 @@
   <td>' . $id_dm . '</td>
   <td>' . $name . '</td>
   <td>
-   <a href="' . $suadm . '"><input type="button" value="sua" /></a> 
-   <a onclick="return confirm("ban co chac chan muon xoa khong?")" href="' . $xoadm . '"> <input type="button" value="xoa" /></a>  
+   <a href="' . $suadm . '"><input type="button" value="sua" id="s" /></a> 
+   <a href="' . $xoadm . '"> <input type="button" value="xoa" onclick ="return confirm(\'ban co chac chan muon xoa?\')" id="x"/></a>  
   </td>
   </tr>';
         }
@@ -39,4 +39,10 @@
     </div>
   </div>
 </div>
+<div style="color: red;">
+    <?php
+    if (isset($tbao) && $tbao != "")
+      echo $tbao;
+    ?>
+  </div>
 </div>

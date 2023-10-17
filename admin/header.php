@@ -12,6 +12,26 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 <style>
+  #s,
+  #ct {
+    color: white;
+    background-color: blue;
+  }
+
+  #s:hover,
+  #ct:hover {
+    background-color: #ccc;
+  }
+
+  #x {
+    color: white;
+    background-color: red;
+  }
+
+  #x:hover {
+    background-color: #ccc;
+  }
+
   .headeradmin {
     padding: 20px 0;
   }
@@ -109,8 +129,8 @@
   }
 
   .formdstk table th:nth-child(1) {
-    width: 5%;
-    padding: 20px;
+    width: 3%;
+    padding: 10px;
     background-color: #ccc;
   }
 
@@ -121,13 +141,13 @@
   }
 
   .formdstk table th:nth-child(3) {
-    width: 15%;
+    width: 12%;
 
     background-color: #ccc;
   }
 
   .formdstk table th:nth-child(4) {
-    width: 10%;
+    width: 5%;
 
     background-color: #ccc;
   }
@@ -139,7 +159,7 @@
   }
 
   .formdstk table th:nth-child(6) {
-    width: 10%;
+    width: 5%;
 
     background-color: #ccc;
   }
@@ -158,6 +178,11 @@
 
   .formdstk table th:nth-child(9) {
     width: 15%;
+
+    background-color: #ccc;
+  }
+  .formdstk table th:nth-child(10) {
+    width: 10%;
 
     background-color: #ccc;
   }
@@ -182,91 +207,148 @@
   .formdsdh input:hover {
     background-color: #999;
   }
-  .formdsdh table th:nth-child(1) {
-  width: 5%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdh table th:nth-child(2) {
-  width: 5%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdh table th:nth-child(3) {
-  width: 20%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdh table th:nth-child(4) {
-  width: 5%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdh table th:nth-child(5) {
-  width: 15%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdh table th:nth-child(6) {
-  width: 25%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdh table th:nth-child(7) {
-  width: 15%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdh table th:nth-child(8) {
-  width: 10%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdm table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.formdsdm table th:nth-child(1) {
-  width: 5%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdm table th:nth-child(2) {
-  width: 10%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdm table th:nth-child(3) {
-  width: 25%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdm table th:nth-child(4) {
-  width: 15%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdm table th:nth-child(5) {
-  width: 25%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdm table th:nth-child(6) {
-  width: 20%;
-  padding: 20px;
-  background-color: #ccc;
-}
-.formdsdm table td {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-}
-.xdh{
-  padding: 5px 7px;
-}
-.xdh:hover{
-  background-color: red;
-}
 
+  .formdsdh table th:nth-child(1) {
+    width: 5%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdh table th:nth-child(2) {
+    width: 5%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdh table th:nth-child(3) {
+    width: 20%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdh table th:nth-child(4) {
+    width: 5%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdh table th:nth-child(5) {
+    width: 15%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdh table th:nth-child(6) {
+    width: 25%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdh table th:nth-child(7) {
+    width: 15%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdh table th:nth-child(8) {
+    width: 10%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdm table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .formdsbl table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .formdsdm table th:nth-child(1) {
+    width: 5%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdm table th:nth-child(2) {
+    width: 10%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdm table th:nth-child(3) {
+    width: 25%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdm table th:nth-child(4) {
+    width: 15%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdm table th:nth-child(5) {
+    width: 25%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdm table th:nth-child(6) {
+    width: 20%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsdm table td {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+  }
+
+  .xdh {
+    padding: 5px 7px;
+  }
+
+  .xdh:hover {
+    background-color: red;
+  }
+
+  .formdsbl table th:nth-child(1) {
+    width: 30%;
+    padding: 20px;
+    background-color: #ccc;
+  }
+
+  .formdsbl table th:nth-child(2) {
+    width: 10%;
+
+    background-color: #ccc;
+  }
+
+  .formdsbl table th:nth-child(3) {
+    width: 20%;
+
+    background-color: #ccc;
+  }
+
+  .formdsbl table th:nth-child(4) {
+    width: 20%;
+
+    background-color: #ccc;
+  }
+
+  .formdsbl table th:nth-child(5) {
+    width: 20%;
+
+    background-color: #ccc;
+  }
+
+  .tenhh {
+    font-size: 30px;
+    margin: 5px 0;
+  }
 </style>
 
 <body>
@@ -282,7 +364,7 @@
         <li><a href="index.php?act=dskh"> Khách Hàng </a></li>
         <li><a href="index.php?act=bluan">Bình luận </a></li>
         <li><a href="index.php?act=bill">Đơn hàng </a></li>
-        <li><a href="index.php?act=thongke">Thống kê  </a></li>
+        <li><a href="index.php?act=thongke">Thống kê </a></li>
         <li><a href="../index.php">Quay về website </a></li>
       </ul>
     </div>

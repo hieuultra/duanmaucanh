@@ -49,12 +49,12 @@
                    <td>' . $id_sp . '</td>
                      <td>' . $name . '</td>
                      <td>' . $hinh . '</td>
-                     <td>' . $price . '</td>
+                     <td>' . number_format($price, 0, ",", ".") . '$' . '</td>
                      <td>' . $discount . '</td>
                      <td>' . $luot_xem . '</td>
                       <td>
-                <a href="' . $suasp . '"><input type="button" value="sua" /></a> 
-               <a href="' . $xoasp . '"> <input type="button" value="xoa" /></a>  
+                <a href="' . $suasp . '"><input type="button" value="sua" id="s" /></a> 
+               <a href="' . $xoasp . '"> <input type="button" value="xoa" onclick ="return confirm(\'ban co chac chan muon xoa?\')" id="x"/></a>  
                     </td>
                  </tr>';
                 }

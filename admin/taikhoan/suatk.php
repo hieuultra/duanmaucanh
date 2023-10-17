@@ -2,12 +2,12 @@
 if (is_array($suatk)) {
     extract($suatk);
 }
-// $hinhpath = "../upload/" . $image;
-// if (is_file($hinhpath)) {
-//     $hinh = "<img src='" . $hinhpath . "' height='70'>";
-// } else {
-//     $hinh = "No photo";
-// }
+$hinhpath = "../upload/" . $hinh;
+if (is_file($hinhpath)) {
+    $hinh = "<img src='" . $hinhpath . "' height='70'>";
+} else {
+    $hinh = "No photo";
+}
 ?>
 <div class="row">
     <div class="row formtitle">
@@ -21,9 +21,15 @@ if (is_array($suatk)) {
                     <input type="text" name="username" value="<?= $username ?>" />
                 </p>
             </div>
-            <div class="row mb10">
+            <!-- <div class="row mb10">
                 <p>MAT KHAU <br>
                     <input type="text" name="password" value="<?= $password ?>" />
+                </p>
+            </div> -->
+            <div class=" row mb10">
+                <p class="mhh"> HINH <br>
+                    <input type="file" name="hinh" width="100px" value="" />
+                    <?= $hinh ?>
                 </p>
             </div>
             <div class=" row mb10">

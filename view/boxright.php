@@ -1,3 +1,36 @@
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+  $().ready(function() {
+    $("#demoForm").validate({
+      onfocusout: false,
+      onkeyup: false,
+      onclick: false,
+      rules: {
+        "username": {
+          required: true,
+        },
+        "password": {
+          required: true,
+        }
+
+      },
+      messages: {
+        "username": {
+          required: "Bắt buộc nhập username",
+        },
+        "password": {
+          required: "Bắt buộc nhập password",
+        }
+      }
+    });
+  });
+</script>
+<style>
+  label.error {
+    color: red;
+  }
+</style>
 <div class="row mb">
   <div class="boxtitle">Tài Khoản</div>
   <div class="boxcontent formtk">
@@ -11,10 +44,23 @@
         <?= $username ?>
       </div>
       <div class="row mb10">
-        <li><a href="index.php?act=mybill">Don hang cua toi</a></li>
+        <?php
+        $hinhpath = "./upload/" . $hinh;
+        if (is_file($hinhpath)) {
+          $hinh = "<img src='" . $hinhpath . "' height='70'>";
+        } else {
+          $hinh = "No photo";
+        }
+        ?>
+        <?= $hinh ?>
+      </div>
+      <div class="row mb10">
+        <?php if ($role == 1) { ?>
+          <li><a href="index.php?act=mybill">Don hang cua toi</a></li>
+        <?php } ?>
         <li><a href="index.php?act=quenmk">Quen Pass</a></li>
         <li><a href="index.php?act=edit_taikhoan">Cap nhap tai khoan</a></li>
-        <?php if ($role == 1) { ?>
+        <?php if ($role == 2) { ?>
           <li><a href="admin/index.php">Dang nhap admin</a></li>
         <?php } ?>
         <li><a href="index.php?act=thoat">Thoat</a></li>
@@ -25,7 +71,7 @@
 
 
     ?>
-      <form action="index.php?act=dangnhap" method="post">
+      <form action="index.php?act=dangnhap" method="post" id="demoForm">
         <div class="row mb10">
           Tên Đăng Nhập <br />
           <input type="text" name="username" id="" />
@@ -66,7 +112,7 @@
   <div class="boxft search">
     <form action="index.php?act=sanpham" method="post">
       <input type="text" name="kyw" id="" placeholder="Tu khoa tim kiem" />
-      <input name="timkiem" type="submit" value="TIM KIEM">
+      <input name="timkiem" type="submit" value="TIM KIEM" id="tk">
     </form>
   </div>
 </div>

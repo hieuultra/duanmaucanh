@@ -3,8 +3,26 @@ session_start();
 include "../../model/pdo.php";
 include "../../model/binhluan.php";
 
-$id_sp = $_REQUEST['id_sp'];
-$dsbl = loadall_bl($id_sp);
+$id_sp = $_REQUEST['id_sp']; //dung doi tuong request de doc gia tri id_sp trong phan chuyen data cua ham load trang ctsp
+$dsbl = loadall_bll($id_sp);
+if (!isset($_SESSION['user'])) {
+    // Người dùng chưa đăng nhập, hãy chuyển hướng hoặc hiển thị thông báo yêu cầu đăng nhập
+    echo "<div class='dn'>Ban phai dang nhap de binh luan!!!!</div>";
+    echo '<div class="boxcontent2 menudoc bluan">';
+    echo '<table>
+    <ul>';
+    foreach ($dsbl as $bl) {
+        extract($bl);
+        echo '<tr><td>' . $noidung . '</td>';
+        echo '<td>' . $username . '</td>';
+        echo '<td>' . $ngaybl . '</td></tr>';
+    }
+    echo ' </ul>
+    </table>
+</div>';
+    exit(); // Kết thúc kịch bản để đảm bảo không có mã HTML/CSS/JS nào được thực thi
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +47,7 @@ $dsbl = loadall_bl($id_sp);
                     foreach ($dsbl as $bl) {
                         extract($bl);
                         echo '<tr><td>' . $noidung . '</td>';
-                        echo '<td>' . $id_tk . '</td>';
+                        echo '<td>' . $username . '</td>';
                         echo '<td>' . $ngaybl . '</td></tr>';
                     }
                     ?>
@@ -38,15 +56,15 @@ $dsbl = loadall_bl($id_sp);
         </div>
         <div class="boxft search">
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                <input type="hidden" name="$id_sp" value="<?= $id_sp ?>">
+                <input type="hidden" name="id_sp" value="<?= $id_sp ?>">
                 <input type="text" name="noidung" />
-                <input name="guibl" type="submit" value="GUI BINH LUAN" class="gbl">
+                <input id="submit_button" name="guibl" type="submit" value="GUI BINH LUAN" class="gbl">
             </form>
         </div>
         <?php
         if (isset($_POST['guibl']) && ($_POST['guibl'])) {
             $noidung = $_POST['noidung'];
-            $id_sp = $_POST['$id_sp'];
+            $id_sp = $_POST['id_sp'];
             $id_tk = $_SESSION['user']['id_tk'];
             // $ngaybl = date("h:i:sa d/m/Y");
             date_default_timezone_set("Asia/Ho_Chi_Minh");
@@ -54,7 +72,6 @@ $dsbl = loadall_bl($id_sp);
             insert_bl($noidung, $id_tk, $id_sp, $ngaybl);
             header("location:" . $_SERVER['HTTP_REFERER']);
         }
-
         ?>
     </div>
 </body>

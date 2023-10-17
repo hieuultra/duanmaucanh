@@ -52,14 +52,21 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 $username = $_POST['username'];
                 $password = $_POST['password'];
                 $ho_ten = $_POST['hoten'];
+                $file = $_FILES['hinh']['name'];
+                $target_dir = "./upload/";
+                $target_file = $target_dir . basename($_FILES['hinh']["name"]);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                } else {
+                    // echo "Sorry, there was an error uploading your file.";
+                }
                 //  $hinh=$_POST['hinh'];
                 $email = $_POST['email'];
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
-                if (($username != '') && ($password != '')) {
-                    insert_tk($username, $password, $ho_ten, $email, $address, $tel);
-                    $tbao = "Da dang ky thanh cong! Vui long dang nhap de thuc hien chuc nang comment hoac dat hang!!";
-                }
+
+                insert_tk($username, $password, $ho_ten, $file, $email, $address, $tel);
+                $tbao = "Da dang ky thanh cong! Vui long dang nhap de thuc hien chuc nang comment hoac dat hang!!";
             }
             include "view/taikhoan/dkytv.php";
             break;
@@ -70,7 +77,6 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
 
                 $password = $_POST['password'];
                 $check_user = check_user($username, $password);
-
                 if (is_array($check_user)) {
                     $_SESSION['user'] = $check_user;
 
@@ -84,21 +90,27 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
             break;
         case 'edit_taikhoan':
             if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
-
                 $username = $_POST['username'];
-
                 $password = $_POST['password'];
                 $ho_ten = $_POST['hoten'];
+                $file = $_FILES['hinh']['name'];
+                $target_dir = "./upload/";
+                $target_file = $target_dir . basename($_FILES['hinh']["name"]);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                } else {
+                    // echo "Sorry, there was an error uploading your file.";
+                }
                 $email = $_POST['email'];
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
                 $id_tk = $_POST['id_tk'];
 
-                update_taikhoan($id_tk, $username, $password, $ho_ten, $email, $address, $tel);
+                update_taikhoan($id_tk, $username, $password, $ho_ten, $file, $email, $address, $tel);
                 $_SESSION['user'] = check_user($username, $password);
                 // header("location:index.php?act=edit_taikhoan");
-                include "view/taikhoan/edit_taikhoan.php";
-                $tbao = "Cap nhap tai khoan thanh cong!";
+
+                $tb = "Cap nhap tai khoan thanh cong!";
             }
             include "view/taikhoan/edit_taikhoan.php";
             break;
@@ -129,9 +141,10 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 $name = $_POST['name'];
                 $image = $_POST['image'];
                 $price = $_POST['price'];
+                $discount=$_POST['discount'];
                 $soluong = 1;
                 $thanhtien = $soluong * $price;
-                $spadd = [$id_sp, $name, $image, $price, $soluong, $thanhtien];
+                $spadd = [$id_sp, $name, $image, $price,$discount, $soluong, $thanhtien];
                 array_push($_SESSION['mycart'], $spadd); //add mang con($spadd) vao mang cha $_session...
             }
 
@@ -170,7 +183,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 //insert into cart: voi $session['mycart'] $id_bill
                 //neu ko login thi dung isset hay empty
                 foreach ($_SESSION['mycart'] as $cart) {
-                    insert_cart($_SESSION['user']['id_tk'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $id_bill);
+                    insert_cart($_SESSION['user']['id_tk'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[5], $cart[6], $id_bill);
                 }
                 //xoa session
                 $_SESSION['cart'] = [];

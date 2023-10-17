@@ -16,7 +16,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['Danh muc', 'So luong san pham'],
                 <?php
-                $tongdm = count($listtk);
+                $tongdm = count($listtk);//tong ds danh muc co bao nhieu dm 
                 $i = 1;
                 foreach ($listtk as $tk) {
                     extract($tk);

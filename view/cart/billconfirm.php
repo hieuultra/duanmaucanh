@@ -20,7 +20,7 @@
              <div class="row_main boxconten cart" style="text-align: center;">
                  <li>MA DON HANG: <?= $bill['id_bill'] ?></li>
                  <li>NGAY DAT HANG: <?= $bill['ngaydh'] ?></li>
-                 <li>TONG DON HANG: <?= number_format($bill['total'], 0, ",", ".")  ?></li>
+                 <li>TONG DON HANG: <?= number_format($bill['total'], 0, ",", ".") ."$" ?></li>
                  <li>PHUONG THUC THANH TOAN: <?= $bill['pttt'] ?></li>
              </div>
          </div>

@@ -24,12 +24,14 @@ function view_cart($del)
 </tr>';
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart[2];
-        $thanhtien = $cart[3] * $cart[4];
-        $gia = $cart[3];
+        // $gia = $cart[3];
+        $gia =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
+        $thanhtien = $gia * $cart[5];
         $tong += $thanhtien;
         if ($del == 1) {
 
-            $xoasp_td = '<td><a href="index.php?act=delcart&idcart=' . $i . '"><input type="button" value="xoa" class="xoa"></a></td>';
+            $xoasp_td = '<td><a href="index.php?act=delcart&idcart=' . $i . '">
+            <input onclick="return confirm(\' ban co muon xoa ko? \')" type="button" value="xoa" class="xoa" id="x"></a></td>';
         } else {
 
             $xoasp_td = "";
@@ -40,7 +42,7 @@ function view_cart($del)
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
         <td>' . $cart[1] . '</td>
         <td>$' . number_format($gia, 0, ",", ".") . '</td>
-        <td>' . $cart[4] . '</td>
+        <td>' . $cart[5] . '</td>
         <td>$' . number_format($thanhtien, 0, ",", ".") . '</td>
        ' . $xoasp_td . '
         
@@ -99,8 +101,8 @@ function tongdh()
 
     $tong = 0;
     foreach ($_SESSION['mycart'] as $cart) {
-
-        $thanhtien = $cart[3] * $cart[4];
+        $gia =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
+        $thanhtien = $gia * $cart[5];
         $tong += $thanhtien;
     }
     return $tong;

@@ -21,9 +21,9 @@
   <td>' . $madanhmuc . '</td>
   <td>' . $tendanhmuc . '</td>
   <td>' . $countsp . '</td>
-  <td>' . $maxgia . '</td>
-  <td>' . $mingia . '</td>
-  <td>' . $giatb . '</td>
+  <td>' . number_format($maxgia, 0, ",", ".") . '$' . '</td>
+  <td>' . number_format($mingia, 0, ",", ".") . '$' . '</td>
+  <td>' . number_format($giatb, 0, ",", ".") . '$' . '</td>
   </tr>';
                 }
                 ?>

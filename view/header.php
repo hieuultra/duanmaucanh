@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <style>
+    .boxcontent{
+        min-height: 280px;
+    }
     .row .im img {
         width: 80%;
     }
@@ -216,11 +219,76 @@
         padding-bottom: 10px;
 
     }
-.t{
-    padding-left: 100px;
-    padding-bottom: 10px;
-    padding-top: 5px;
-}
+
+    .t {
+        padding-left: 100px;
+        padding-bottom: 10px;
+        padding-top: 5px;
+    }
+
+    .dn {
+        font-size: 20px;
+        font-weight: bold;
+        color: red;
+    }
+
+    #tk {
+        background-color: blue;
+        color: white;
+    }
+
+    #tk:hover {
+        background-color: #999;
+        border: none;
+    }
+
+    .v {
+        margin-top: 10px;
+    }
+
+    #cn {
+        background-color: blue;
+        color: white;
+    }
+
+    #cn:hover {
+        background-color: #999;
+    }
+
+    /* .boxsp {
+        position: relative;
+    } */
+
+    .imsp {
+        max-width: 100%;
+        transform: all 0.3s ease-in-out;
+    }
+
+    .imsp:hover {
+        cursor: pointer;
+        /* transform: scale(1.1) rotate(20deg); */
+        transform: scale(1.3);
+    }
+
+    #a {
+        color: black;
+        font-weight: bold;
+    }
+
+    #a:hover {
+        color: red;
+    }
+
+    .spcl li {
+        margin: 7px 0;
+    }
+
+    .hi li {
+        margin: 7px 0;
+        color: black;
+        font-weight: bold;
+    }
+
     /* .mySlides img {
         width: 20%;
         height: 20%;

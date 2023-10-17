@@ -1,5 +1,13 @@
 <?php
 ob_start();
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else {
+    if ($_SESSION['user']['role'] == 1) {
+        header("location: ../index.php");
+    }
+}
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
@@ -18,6 +26,7 @@ if (isset($_GET['act'])) {
                 $nameloai = $_POST['nameloai'];
                 if ($nameloai != "") {
                     insert_dm($nameloai);
+                    header("location:index.php?act=dslh");
                     $tbao = 'Them data thanh cong';
                 }
             }
@@ -144,16 +153,17 @@ if (isset($_GET['act'])) {
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
 
-                // $file = $_FILES['img']['name'];
-                // $target_dir = "../upload/";
-                // $target_file = $target_dir . basename($_FILES['img']["name"]);
-                // if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-                //     // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                // } else {
-                //     // echo "Sorry, there was an error uploading your file.";
-                // }
+                $file = $_FILES['hinh']['name'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES['hinh']["name"]);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                } else {
+                    // echo "Sorry, there was an error uploading your file.";
+                }
                 if ($username != "") {
-                    insert_taikhoan($username, $password, $ho_ten, $email, $address, $tel);
+                    insert_taikhoan($username, $password, $ho_ten, $file, $email, $address, $tel);
+                    header("location:index.php?act=dskh");
                     $tbao = 'Them data thanh cong';
                 }
             }
@@ -187,20 +197,20 @@ if (isset($_GET['act'])) {
             if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
                 $id_tk = $_POST['id_tk'];
                 $username = $_POST['username'];
-                $password = $_POST['password'];
+                // $password = $_POST['password'];
+                $file = $_FILES['hinh']['name'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES['hinh']["name"]);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                } else {
+                    // echo "Sorry, there was an error uploading your file.";
+                }
                 $email = $_POST['email'];
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
 
-                // $file = $_FILES['img']['name'];
-                // $target_dir = "../upload/";
-                // $target_file = $target_dir . basename($_FILES['img']["name"]);
-                // if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-                //     // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                // } else {
-                //     // echo "Sorry, there was an error uploading your file.";
-                // }
-                update_tk($id_tk, $username, $password, $email, $address, $tel);
+                update_tk($id_tk, $username, $file, $email, $address, $tel);
                 $tbao = 'Sua data thanh cong';
             }
 
@@ -210,7 +220,7 @@ if (isset($_GET['act'])) {
             /*controller cho bl */
         case 'bluan':
 
-            $dsbl = loadall_bl(0);
+            $dsbl = loadall_bl();
 
             include "binhluan/bluan.php";
             break;
@@ -218,12 +228,20 @@ if (isset($_GET['act'])) {
             if (isset($_GET['id_bl']) && ($_GET['id_bl']) > 0) {
                 delete_bl($_GET['id_bl']);
             }
-            $dsbl = loadall_bl(0);
+            // header("location:index.php?act=ctbl");
+            // $dsbl = loadall_bluan(0);
+            if (isset($_GET['id_sp']) && ($_GET['id_sp']) > 0) {
+                $onebl = loadone_spbl($_GET['id_sp']);
+                $ctbl = loadall_bluan($_GET['id_sp']);
+            }
 
-            include "binhluan/bluan.php";
+            include "binhluan/ctbl.php";
             break;
         case 'ctbl':
-            $dsbl = loadall_bl(0);
+            if (isset($_GET['id_sp']) && ($_GET['id_sp']) > 0) {
+                $onebl = loadone_spbl($_GET['id_sp']);
+                $ctbl = loadall_bluan($_GET['id_sp']);
+            }
             include "binhluan/ctbl.php";
             break;
         case 'bill':
@@ -253,17 +271,15 @@ if (isset($_GET['act'])) {
             break;
         case 'trangchu':
             $listtk = loadall_thongke();
-            include "thongke/bieudo.php";
             include "tcadmin/tchuadmin.php";
             break;
         default:
-            include "home.php";
+            $listtk = loadall_thongke();
+            include "tcadmin/tchuadmin.php";
             break;
     }
 } else {
-    include "home.php";
+    $listtk = loadall_thongke();
+    include "tcadmin/tchuadmin.php";
 }
-
-
-
 include "ft.php";

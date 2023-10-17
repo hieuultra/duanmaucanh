@@ -36,12 +36,12 @@
                    <td>' . $id_bill . '</td>
                    <td>' . $kh . '</td>
                    <td>' . $countsp . '</td>
-                   <td><strong>' . $total . '</strong></td>
+                   <td><strong>' . number_format($total, 0, ",", ".") . '$' . '</strong></td>
                    <td>' . $ttdh . '</td>
                    <td>' . $ngaydh . '</td>
                    <td>
                    <a href="' . $xoabill . '">
-                       <input type="button" value="xoa" class="xdh" /></a>
+                       <input type="button" value="xoa" class="xdh" onclick ="return confirm(\'ban co chac chan muon xoa?\')" id="x"/></a>
                    </td>
                </tr>';
                     }

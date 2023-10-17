@@ -22,7 +22,7 @@
                             <td>' . $id_bill . '</td>
                             <td>' . $ngaydh . '</td>
                             <td>' . $countsp . '</td>
-                            <td>' . $total . '</td>
+                            <td>' . number_format($total, 0, ",", ".") . '$' . '</td>
                             <td>' . $ttdh . '</td>
                                      </tr>';
                             }
