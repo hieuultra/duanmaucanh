@@ -12,7 +12,8 @@
                 echo '<div class="row mb spct"><img src="' . $hinh . '" ></div>';
                 echo '<li>' . "MA SP:" . $id_sp . '</li>';
                 echo '<li>' . "TEN SP:" . $name . '</li>';
-                echo '<li>' . "DON GIA:" . number_format($tt, 0, ",", ".") . '$' .  '</li>';
+                echo '<li id="b">' . "DON GIA:" . number_format($tt, 0, ",", ".") . '$' .  '</li>';
+                echo '<li>' . "GIA GOC:" . "<del>" . number_format($price, 0, ",", ".") . '$' . "</del>" .'</li>';
                 echo '<li>' . "GIAM GIA:" . $discount . "%" . '</li>';
                 echo  $mo_ta;
                 echo ' <div class="row">

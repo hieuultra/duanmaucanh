@@ -27,6 +27,7 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
                 $onesp = loadone_sp($_GET['id_sp']);
                 extract($onesp);
                 $spcl = loadone_sp_cungloai($_GET['id_sp'], $id_dm);
+                tangluotxem($_GET['id_sp']);
                 include "view/ctietsp.php";
             } else {
                 include "view/home.php";
@@ -137,14 +138,19 @@ if (isset($_GET['act']) && ($_GET['act']) != "") {
         case 'addtocart':
             //add thong tin sp tu cai form add to cart den session
             if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
+                // Kiểm tra tài khoản đang đăng nhập
+                if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 2) {
+                    header('Location: index.php'); // Chuyển hướng về trang index.php
+                    exit(); // Dừng việc thực thi các lệnh tiếp theo
+                }
                 $id_sp = $_POST['id_sp'];
                 $name = $_POST['name'];
                 $image = $_POST['image'];
                 $price = $_POST['price'];
-                $discount=$_POST['discount'];
+                $discount = $_POST['discount'];
                 $soluong = 1;
                 $thanhtien = $soluong * $price;
-                $spadd = [$id_sp, $name, $image, $price,$discount, $soluong, $thanhtien];
+                $spadd = [$id_sp, $name, $image, $price, $discount, $soluong, $thanhtien];
                 array_push($_SESSION['mycart'], $spadd); //add mang con($spadd) vao mang cha $_session...
             }
 

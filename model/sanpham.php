@@ -81,3 +81,10 @@ function loadone_sp_cungloai($id_sp, $id_dm)
     $dssp = pdo_query($sql);
     return $dssp;; //co ket qua tra ve phai return
 }
+function tangluotxem($id_sp)
+{
+    $onesp = loadone_sp($id_sp);
+    $luotxem = $onesp['luot_xem'] + 1;
+    $sql = "update sanpham set luot_xem='" . $luotxem . "' where id_sp =" . $id_sp;
+    pdo_execute($sql);
+}

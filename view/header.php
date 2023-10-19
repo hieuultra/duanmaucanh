@@ -289,96 +289,9 @@
         font-weight: bold;
     }
 
-    /* .mySlides img {
-        width: 20%;
-        height: 20%;
-        margin-left: 400px;
+    #b{
+        color: red;
     }
-
-    .mota {
-        margin-top: 20px;
-    }
-
-    .mySlidesss {
-        border: 1px solid #ccc;
-    }
-
-    .mySlidess {
-        border: 1px solid #ccc;
-    }
-
-    .ctsp {
-        margin-left: 20px;
-        margin-top: 30px;
-    }
-
-    .b {
-        margin-top: 10px;
-        padding-left: 20px;
-        border: 1px solid #ccc;
-    }
-
-    .btr {
-        float: left;
-        width: 50%;
-
-    }
-
-    .bph {
-        float: left;
-        width: 50%;
-        margin-top: 56px;
-    }
-
-    .input {
-
-        margin-top: 70px;
-    }
-
-    .i {
-        width: 700px;
-        height: 50px;
-    }
-
-    .sb {
-        width: 60px;
-        height: 50px;
-    }
-
-    .hcl {
-
-        border: 1px solid #666;
-        width: 770px;
-        margin-top: 20px;
-        padding-left: 20px;
-        color: blue;
-    }
-
-    .hcl li a {
-        text-decoration: none;
-
-    }
-
-    .hcl li a:hover {
-        text-decoration: underline;
-
-    }
-
-    .c {
-        width: 1050px;
-        margin-left: 220px;
-        margin-top: 30px;
-    }
-
-    .br {
-        float: left;
-        width: 74%;
-    }
-
-    .boxh {
-        float: left;
-        width: 24%;
-    } */
 </style>
 
 <body>

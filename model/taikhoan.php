@@ -14,16 +14,16 @@ function check_user($username, $password)
 }
 function update_taikhoan($id_tk, $username, $password, $ho_ten, $file, $email, $address, $tel)
 {
-    if($file!=''){
+    if ($file != '') {
         $sql = "update taikhoan set username='" . $username . "',password='" . $password . "',
         ho_ten='" . $ho_ten . "',hinh='" . $file . "',email='" . $email . "',
         address='" . $address . "',tel='" . $tel . "' where id_tk=" . $id_tk;
-    }else{
+    } else {
         $sql = "update taikhoan set username='" . $username . "',password='" . $password . "',
         ho_ten='" . $ho_ten . "',email='" . $email . "',
         address='" . $address . "',tel='" . $tel . "' where id_tk=" . $id_tk;
     }
-    
+
     pdo_execute($sql);
 }
 function check_email($email)
@@ -50,19 +50,19 @@ function loadone_tk($id_tk)
     $suasp = pdo_query_one($sql);
     return $suasp; //co ket qua tra ve phai return
 }
-function  update_tk($id_tk, $username,$file, $email, $address, $tel)
+function  update_tk($id_tk, $username, $file, $email, $address, $tel, $role)
 {
-    if($file!=''){
+    if ($file != '') {
         $sql = "update taikhoan set username='" . $username . "',hinh='" . $file . "',email='" . $email . "',
-        address='" . $address . "',tel='" . $tel . "' where id_tk=" . $id_tk;
-    }else{
+        address='" . $address . "',tel='" . $tel . "',role='" . $role . "' where id_tk=" . $id_tk;
+    } else {
         $sql = "update taikhoan set username='" . $username . "',email='" . $email . "',
-        address='" . $address . "',tel='" . $tel . "' where id_tk=" . $id_tk;
+        address='" . $address . "',tel='" . $tel . "' ,role='" . $role . "' where id_tk=" . $id_tk;
     }
-   
+
     pdo_execute($sql);
 }
-function insert_taikhoan($username, $password, $ho_ten,$file, $email, $address, $tel)
+function insert_taikhoan($username, $password, $ho_ten, $file, $email, $address, $tel)
 {
     $sql = "insert into taikhoan(username,password,ho_ten,hinh,email,address,tel) values('$username','$password','$ho_ten','$file','$email','$address','$tel')";
     pdo_execute($sql);

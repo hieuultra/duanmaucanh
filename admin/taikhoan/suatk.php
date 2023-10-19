@@ -15,7 +15,21 @@ if (is_file($hinhpath)) {
     </div>
     <div class=" row formct">
         <form action="index.php?act=updatetk" method="post" enctype="multipart/form-data">
+            <div class="mb 10">
+            <label for="">VAI TRO:</label>
+            <select name="id_role" id="">
+                <option value="0" selected>TAT CA</option>
+                <?php
+                foreach ($dsrl as $ds) {
 
+                    if ($ds['id_role'] == $role) $s = "selected";
+                    else $s = "";
+                    echo '<option value="' . $ds['id_role'] . '" ' . $s . '>' . $ds['name_role'] . '</option>';
+                }
+                ?>
+            </select>
+            </div>
+     
             <div class=" row mb10">
                 <p>TEN DANG NHAP <br>
                     <input type="text" name="username" value="<?= $username ?>" />
@@ -63,11 +77,9 @@ if (is_file($hinhpath)) {
                 <input class="btn" type="button" value="DANH SACH">
             </a>
             <br>
-
+            <br>
+        </form>
     </div>
-
-    <br>
-    </form>
     <?php
     if (isset($tbao) && $tbao != "")
         echo $tbao;

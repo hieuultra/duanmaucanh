@@ -14,6 +14,7 @@ include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/cart.php";
+include "../model/role.php";
 include "header.php";
 //controler
 
@@ -190,12 +191,13 @@ if (isset($_GET['act'])) {
 
                 $suatk = loadone_tk($_GET['id_tk']);
             }
-            // $dslh = loadall_dm();
+            $dsrl = loadall_rl();
             include "taikhoan/suatk.php";
             break;
         case 'updatetk':
             if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
                 $id_tk = $_POST['id_tk'];
+                $id_role = $_POST['id_role'];
                 $username = $_POST['username'];
                 // $password = $_POST['password'];
                 $file = $_FILES['hinh']['name'];
@@ -210,7 +212,7 @@ if (isset($_GET['act'])) {
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
 
-                update_tk($id_tk, $username, $file, $email, $address, $tel);
+                update_tk($id_tk, $username, $file, $email, $address, $tel,$id_role);
                 $tbao = 'Sua data thanh cong';
             }
 

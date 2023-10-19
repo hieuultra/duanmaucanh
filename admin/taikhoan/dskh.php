@@ -36,6 +36,12 @@
                     } else {
                         $hinh = "No photo";
                     }
+                    // Kiểm tra vai trò
+                    if ($role == 2) {
+                        $xoatk = ''; // Không hiển thị nút xóa cho admin
+                    } else {
+                        $xoatk = '<a href="' . $xoatk . '"> <input type="button" value="xoa" onclick ="return confirm(\'ban co chac chan muon xoa?\')" id="x"/></a>';
+                    }
                     echo '<tr>
             <td><input type="checkbox" name="cb" id="" /></td>
             <td>' . $id_tk . '</td>
@@ -47,13 +53,13 @@
          <td>' . $tel . '</td>
          <td>' . $name_role . '</td>
         <td> <a href="' . $suatk . '"><input type="button" value="sua" id="s" /></a> 
-      <a href="' . $xoatk . '"> <input type="button" value="xoa" onclick ="return confirm(\'ban co chac chan muon xoa?\')" id="x"/></a>  </td>
+                 ' . $xoatk . '</td>
                         </tr>';
                 }
                 ?>
             </table>
         </div>
-
+        <!-- <a href="' . $xoatk . '"> <input type="button" value="xoa" onclick ="return confirm(\'ban co chac chan muon xoa?\')" id="x"/></a> -->
 
         <div class=" mb10">
             <input type="submit" value="CHON TAT CA" />

@@ -4,7 +4,7 @@
       </div>
       <form action="index.php?act=bill" method="post">
           <input type="text" name="kyw" placeholder="nhap ma don hang">
-          <input type="submit" name="go" value="Go">
+          <input type="submit" name="go" value="Search">
       </form>
 
       <div class="row formdh">
