@@ -62,10 +62,10 @@
         <!-- <a href="' . $xoatk . '"> <input type="button" value="xoa" onclick ="return confirm(\'ban co chac chan muon xoa?\')" id="x"/></a> -->
 
         <div class=" mb10">
-            <input type="submit" value="CHON TAT CA" />
-            <input type="submit" value="BO CHON TAT CA" />
-            <input type="submit" value="XOA CAC MUC DA CHON" />
-            <a href="index.php?act=addtk"><input type="button" value="Nhap them" /></a>
+            <input type="submit" value="CHON TAT CA" id="t"/>
+            <input type="submit" value="BO CHON TAT CA" id="t" />
+            <input type="submit" value="XOA CAC MUC DA CHON" id="t" />
+            <a href="index.php?act=addtk"><input type="button" value="Nhap them" id="t"/></a>
         </div>
     </div>
 </div>

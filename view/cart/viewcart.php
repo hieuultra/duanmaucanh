@@ -19,7 +19,7 @@
                  <input type="button" value="TIEP TUC DAT HANG" class="tt">
              </a>
              <a href="index.php?act=delcart">
-                 <input type="button" value="XOA GIO HANG" class="dgh">
+                 <input onclick="return confirm('ban chac chan muon xoa chu?')" type="button" value="XOA GIO HANG" class="dgh">
              </a>
 
          </div>

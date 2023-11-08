@@ -292,6 +292,14 @@
     #b{
         color: red;
     }
+    #ttdh{
+        color: red;
+        font-weight: bold;
+        padding: 5px 0;
+    }
+    #md{
+        padding: 5px 0;
+    }
 </style>
 
 <body>

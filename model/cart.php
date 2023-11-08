@@ -58,7 +58,7 @@ function view_cart($del)
 ';
 }
 
-function show_ctdh($listbill)
+function show_ctdh($listbill) //bien truyen vao ko lien quan den bien ben ngoai
 {
     global  $img_path;
     $tong = 0;
@@ -74,7 +74,7 @@ function show_ctdh($listbill)
 </tr>';
     foreach ($listbill as $cart) {
         $hinh = $img_path . $cart['img'];
-        $tong += $cart['thanhtien'];
+        // $tong += $cart['thanhtien'];
         echo ' 
        <tr> 
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
@@ -87,14 +87,20 @@ function show_ctdh($listbill)
     ';
         $i += 1;
     }
+    foreach ($_SESSION['mycart'] as $cart) {
+        // $gia = $cart[3];
+        $gia =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
+        $thanhtien = $gia * $cart[5];
+        $tong += $thanhtien;
+    }
     echo '
-<td colspan="4">Tổng đơn hàng</td>
-
-<td>$' . number_format($tong, 0, ",", ".") . '</td>
-
-';
+        <tr> 
+        <td colspan="4">Tổng đơn hàng</td>
+        
+        <td>$' . number_format($tong, 0, ",", ".") . '</td>
+        </tr> 
+        ';
 }
-
 
 function tongdh()
 {
@@ -112,7 +118,7 @@ function insert_bill($name, $diachi, $email, $tel, $pttt, $tongdh, $ngaydh, $id_
 {
     $sql = "insert into bill(name,diachi,email,tel,pttt,total,ngaydh,id_tk) 
     values('$name','$diachi','$email','$tel','$pttt','$tongdh','$ngaydh','$id_tk')";
-    return pdo_execute_return_lastInsertId($sql);
+    return pdo_execute_return_lastInsertId($sql); // insert xong tra ve id vua insert de insert vao table cart
 }
 function insert_cart($id_tk, $id_sp, $img, $name, $price, $soluong, $thanhtien, $id_bill)
 {
@@ -137,7 +143,7 @@ function loadall_cart_count($id_bill)
 {
     $sql = "select * from cart where id_bill=" . $id_bill;
     $bill = pdo_query($sql);
-    return sizeof($bill); //co ket qua tra ve phai return
+    return sizeof($bill); //dem so lg mat hang
 }
 function loadall_bill($kyw = "", $id_tk = 0)
 {

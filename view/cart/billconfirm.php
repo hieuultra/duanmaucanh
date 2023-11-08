@@ -18,10 +18,10 @@
          <div class="row_main mb">
              <div class="boxtitle">THONG TIN DON HANG</div>
              <div class="row_main boxconten cart" style="text-align: center;">
-                 <li>MA DON HANG: <?= $bill['id_bill'] ?></li>
-                 <li>NGAY DAT HANG: <?= $bill['ngaydh'] ?></li>
-                 <li>TONG DON HANG: <?= number_format($bill['total'], 0, ",", ".") ."$" ?></li>
-                 <li>PHUONG THUC THANH TOAN: <?= $bill['pttt'] ?></li>
+                 <li id="md">MA DON HANG: <?= $bill['id_bill'] ?></li>
+                 <li id="md">NGAY DAT HANG: <?= $bill['ngaydh'] ?></li>
+                 <li id="ttdh">TONG DON HANG: <?= number_format($bill['total'], 0, ",", ".") ."$" ?></li>
+                 <li id="md">PHUONG THUC THANH TOAN: <?= $bill['pttt'] ?></li>
              </div>
          </div>
 
@@ -69,7 +69,8 @@
                              </tr> -->
 
                              <?php
-                                show_ctdh($billct);
+                                // show_ctdh($billct);
+                                view_cart(0);
                                 ?>
                          </table>
                      </div>

@@ -43,11 +43,11 @@
         <input type="text" name="nameloai" />
       </div>
 
-      <input type="submit" value="THEM" name="them">
+      <input type="submit" value="THEM" name="them" id="t">
 
-      <input type="submit" value="NHAP LAI" name="nl">
+      <input type="submit" value="NHAP LAI" name="nl" id="t">
       <a href="index.php?act=dslh">
-        <input class="btn" type="button" value="DANH SACH">
+        <input class="btn" type="button" value="DANH SACH" id="t">
       </a>
       <br>
     </form>
